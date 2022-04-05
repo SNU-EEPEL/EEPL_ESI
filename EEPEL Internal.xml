@@ -2,7 +2,7 @@
 <EtherCATInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EtherCATInfo.xsd" Version="1.2">
 	<Vendor FileVersion="3">
 		<Id>#x00000CCB</Id>
-		<Name>Seoul National University EEPEL</Name>
+		<Name>Seoul National University EEPEL and PCSL</Name>
 		<ImageData16x14>424DE6000000000000007600000028000000100000000E000000010004000000000070000000000000000000000000000000000000000000000000008000008000000080800080000000800080008080000080808000C0C0C0000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFFFFFFFFF77777778FFFFFFF80000000008FFFFF800488870008FFFF8006FFFF3006FFFF8006FFFF3007FFFF80000000006FFFFF8000000068FFFFFF8006FF8104FFFFFF8006FFFF004FFFFF8006FFF7004FFFFF80000000007FFFFF8000000048FFFFFFFFFFFFFFFFFFFF</ImageData16x14>
 	</Vendor>
 	<Descriptions>
@@ -20,9 +20,10 @@
 				<GroupType>LAN9252</GroupType>
 				<Fmmu OpOnly="1">Outputs</Fmmu>
 				<Sm StartAddress="#x1000" ControlByte="#x4" Enable="1">Outputs</Sm>
+				<Sm StartAddress="#x100C" ControlByte="#x0" Enable="1">Inputs</Sm>
 				<RxPdo Fixed="1" Sm="0">
 					<Index>#x1a00</Index>
-					<Name>PWM</Name>
+					<Name>ToSlave</Name>
 					<Entry>
 						<Index>#x3101</Index>
 						<SubIndex>1</SubIndex>
@@ -30,7 +31,32 @@
 						<Name>Duty</Name>
 						<DataType>UNSIGNED16</DataType>
 					</Entry>
+					<Entry>
+						<Index>#x3102</Index>
+						<SubIndex>2</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Test_RxPdo</Name>
+						<DataType>UNSIGNED16</DataType>
+					</Entry>
 				</RxPdo>
+				<TxPdo Fixed="1" Sm="1">
+					<Index>#x1a01</Index>
+					<Name>FromSlave</Name>
+					<Entry>
+						<Index>#x4101</Index>
+						<SubIndex>1</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>CapVoltage</Name>
+						<DataType>UNSIGNED16</DataType>
+					</Entry>
+					<Entry>
+						<Index>#x4102</Index>
+						<SubIndex>2</SubIndex>
+						<BitLen>16</BitLen>
+						<Name>Test_TxPdo</Name>
+						<DataType>UNSIGNED16</DataType>
+					</Entry>
+				</TxPdo>
 				<Eeprom>
 					<ByteSize>2048</ByteSize>
 					<ConfigData>89033CEE88130000</ConfigData>
